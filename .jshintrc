@@ -9,5 +9,11 @@
   "undef": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "node": true,
+  "globals": {
+    "it": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true
+  }
 }
