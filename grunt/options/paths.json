@@ -1,10 +1,10 @@
 {
   "src": {
-    "lint": "tasks/*.js"
+    "lint": "tasks/**/*.js"
   },
   "test": {
-    "nodeunit": [
-      "test/*_test.js"
+    "mocha": [
+      "test/**/*.js"
     ]
   }
 }

@@ -1,11 +1,9 @@
 {
   "default": [
-    "jshint",
-    "nodeunit"
+    "jshint"
   ],
   "test": [
-    "weightwatchsy:test",
-    "nodeunit"
+    "mochaTest"
   ],
   "dev": [
   ]
