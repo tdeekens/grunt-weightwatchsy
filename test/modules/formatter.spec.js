@@ -9,13 +9,9 @@ var gb = Math.pow(2, 30),
 
 describe('Formatter specification', function() {
   beforeEach(function() {
-    unhumanFormatter = new Formatter({
-      human: false
-    });
+    unhumanFormatter = new Formatter(false);
 
-    humanFormatter = new Formatter({
-      human: true
-    });
+    humanFormatter = new Formatter(true);
   });
 
   it('returns only bytes if human option not set', function() {

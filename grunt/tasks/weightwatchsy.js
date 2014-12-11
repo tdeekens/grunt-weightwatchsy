@@ -2,8 +2,5 @@
 module.exports = {
   options: {
   },
-  test: {
-    options: {
-    }
-  },
+  test: ['./tasks/**']
 };
