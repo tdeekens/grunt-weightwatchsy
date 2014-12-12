@@ -55,10 +55,10 @@ Aggregator.prototype.sumUp = function(extension, size, exported) {
     } else {
       this._aggregated[extension.sanitized] += size;
     }
-  } else {
-    this._sizesByExtension[extension.ordinary] = (this._sizesByExtension[extension.ordinary] === undefined) ?
-      size : this._sizesByExtension[extension.ordinary] + size;
   }
+
+  this._sizesByExtension[extension.ordinary] = (this._sizesByExtension[extension.ordinary] === undefined) ?
+    size : this._sizesByExtension[extension.ordinary] + size;
 };
 
 Aggregator.prototype.getExtension = function(file) {

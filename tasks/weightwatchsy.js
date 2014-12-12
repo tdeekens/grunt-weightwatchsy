@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     var options = this.options({
       human: true,
       location: './dist/weightwatchsy.json',
-      aggregate: ['.txt', '.css', '.js', '.png', '.jpg']
+      aggregate: ['.txt', '.css', '.js', '.png', '.jpg'],
+      groups: {}
     });
 
     var files = [];
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
     });
 
     var sizeDeterminer = new SizeDeterminer();
-    var aggregator = new Aggregator(options.aggregate);
+    var aggregator = new Aggregator(options.aggregate, options.groups);
     var formatter = new Formatter(options.human);
     var persister = new Persister(options.location);
 
