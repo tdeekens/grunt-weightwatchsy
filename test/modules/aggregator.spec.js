@@ -64,4 +64,25 @@ describe('Aggregator specification', function() {
     expect(aggregated['.css']).to.equal(12);
     expect(aggregated.css).to.equal(0);
   });
+
+  it('aggregates file sizes with listed aggregations', function() {
+    aggregator = new Aggregator(['.jpg'], {
+      text: ['.css', '.js', '.txt']
+    });
+
+    var files = [
+      './test/fixtures/my.txt',
+      './test/fixtures/five.txt',
+      './test/fixtures/cents.txt',
+      './test/fixtures/some.css'
+    ],
+    sizes,
+    aggregated;
+
+    sizes = sizeDeterminer.determine(files);
+    aggregated = aggregator.aggregate(sizes);
+
+    expect(aggregated['.jpg']).to.equal(0);
+    expect(aggregated.text).to.equal(26);
+  });
 });
