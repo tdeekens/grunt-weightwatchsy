@@ -38,10 +38,14 @@ module.exports = function(grunt) {
     var formatter = new Formatter(options.human);
     var persister = new Persister(options.location);
 
-    var sizes = sizeDeterminer.determine(files);
-    var aggregated = aggregator.aggregate(sizes);
-    var formatted = formatter.formatAll(aggregated);
+    var fileSizes = sizeDeterminer.determine(files);
+    var aggregatedSizes = aggregator.aggregate(fileSizes);
 
-    persister.persist(aggregated);
+    var completeSizes = {
+      files: formatter.formatAll(fileSizes),
+      aggregations: formatter.formatAll(aggregatedSizes)
+    };
+
+    persister.persist(completeSizes);
   });
 };
