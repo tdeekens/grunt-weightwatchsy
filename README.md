@@ -36,11 +36,18 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
 
 ### Options
 
-TDB
+```javascript
+{
+  human: <true> //Prettifies file sizes to readable format
+  location: <'dist/weightwatchsy.json'> //Path where to save results
+  aggregate: <['.txt', '.css', '.js', '.png', '.jpg']> //Sums up assets' sizes per extension type
+  groups <{}> //Allows for grouping asset types e.g. `{text: ['.css', '.css']}`  
+}
+```
 
 ## Developing & Contributing
 
 Developing on the task alone is fairly easy just `git clone https://github.com/tdeekens/grunt-weightwatchsy.git` then `cd grunt-weightwatchsy`. From there one has to link the package to itself via `npm link && npm link grunt-weightwatchsy` which will allow for calling `grunt dev`. Now just work the `task/weightwatchsy.js` and check results - feel free to submit a pull-request!
 
 ## Release History
-- 0.0.0 Development version - not intended for use!
+- 0.0.1 Initial release

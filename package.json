@@ -1,6 +1,6 @@
 {
   "name": "grunt-weightwatchsy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A grunt plugin to gather a project's assets' file sizes.",
   "scripts": {
     "test": "grunt test"
