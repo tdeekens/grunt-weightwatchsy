@@ -7,8 +7,7 @@
 [![NPM](https://nodei.co/npm/grunt-weightwatchsy.png?mini=true)](https://nodei.co/npm/grunt-weightwatchsy/)
 
 [![Build Status](https://travis-ci.org/tdeekens/grunt-weightwatchsy.svg?branch=master)](https://travis-ci.org/tdeekens/grunt-weightwatchsy)
-[![Build Status](https://drone.io/github.com/tdeekens/grunt-weightwatchsy/status.png)](https://drone.io/github.com/tdeekens/grunt-weightwatchsy/latest)
-[![Circle CI](https://circleci.com/gh/tdeekens/grunt-weightwatchsy/tree/master.svg?style=svg)](https://circleci.com/gh/tdeekens/grunt-weightwatchsy/tree/master)
+[![Coverage Status](https://coveralls.io/repos/tdeekens/grunt-weightwatchsy/badge.png)](https://coveralls.io/r/tdeekens/grunt-weightwatchsy)
 [![Dependency Status](https://david-dm.org/tdeekens/grunt-weightwatchsy.svg?style=flat)](https://david-dm.org/tdeekens/grunt-weightwatchsy)
 
 ## Getting Started
