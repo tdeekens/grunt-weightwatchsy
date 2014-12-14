@@ -47,20 +47,20 @@ module.exports = function(grunt) {
 
     var fileSizes = sizeDeterminer.determine(files);
     var aggregatedSizes = aggregator.aggregate(fileSizes.files);
-    var breakBuild = breaker.breakOn(files, options.break);
+    var sanity = breaker.breakOn(files, options.break);
 
     var completeSizes = {
       files: formatter.formatAll(fileSizes.files),
       summary: formatter.formatAll(fileSizes.summary),
       aggregations: formatter.formatAll(aggregatedSizes),
-      breaker: breakBuild
+      sanity: sanity
     };
 
     completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
 
     persister.persist(completeSizes);
 
-    if (breakBuild.break === true) {
+    if (sanity.broken === true) {
       grunt.log.errorlns('Assets are not passing your conditions, breaking build...');
     } else {
       grunt.log.oklns('Assets have been analyzed, build passing...');

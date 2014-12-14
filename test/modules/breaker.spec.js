@@ -18,7 +18,7 @@ describe('Breaker specification', function() {
     var file = './test/fixtures/my.txt';
     var sizes = sizeDeterminer.determine([file]);
 
-    expect(breaker.breakOn({}, sizes).break).to.be.false;
+    expect(breaker.breakOn({}, sizes).broken).to.be.false;
   });
 
   it('intendens to break when a file condition is truethy', function() {
@@ -35,7 +35,7 @@ describe('Breaker specification', function() {
     }, sizes);
 
     expect(
-      breakerResult.break
+      breakerResult.broken
     ).to.be.true;
 
     expect(
@@ -60,7 +60,7 @@ describe('Breaker specification', function() {
     });
 
     expect(
-      breakerResult.break
+      breakerResult.broken
     ).to.be.true;
 
     expect(

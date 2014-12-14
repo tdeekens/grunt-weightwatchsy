@@ -7,7 +7,7 @@ function Breaker() {
 Breaker.prototype.breakOn = function(conditions, sizes) {
   var
     analysis = {
-      break: false,
+      broken: false,
       reasons: []
     },
     fileConditions = conditions.files || {},
@@ -16,14 +16,14 @@ Breaker.prototype.breakOn = function(conditions, sizes) {
   Object.keys(fileConditions).forEach(function(file) {
     if (sizes.files[file] > conditions.files[file]) {
       analysis.reasons.push(file);
-      analysis.break = true;
+      analysis.broken = true;
     }
   });
 
   Object.keys(aggregationConditions).forEach(function(aggregation) {
     if (sizes.aggregations[aggregation] > conditions.aggregations[aggregation]) {
       analysis.reasons.push(aggregation);
-      analysis.break = true;
+      analysis.broken = true;
     }
   });
 
