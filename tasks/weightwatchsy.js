@@ -12,6 +12,7 @@ var SizeDeterminer = require('./modules/size-determiner');
 var Aggregator = require('./modules/aggregator');
 var Formatter = require('./modules/formatter');
 var Persister = require('./modules/persister');
+var Breaker = require('./modules/breaker');
 var fs = require('fs');
 
 module.exports = function(grunt) {
@@ -21,7 +22,11 @@ module.exports = function(grunt) {
       human: true,
       location: './dist/weightwatchsy.json',
       aggregate: ['.txt', '.css', '.js', '.png', '.jpg'],
-      groups: {}
+      groups: {},
+      break: {
+        files: {},
+        aggregations: {}
+      }
     });
 
     var files = [];
@@ -38,18 +43,27 @@ module.exports = function(grunt) {
     var aggregator = new Aggregator(options.aggregate, options.groups);
     var formatter = new Formatter(options.human);
     var persister = new Persister(options.location);
+    var breaker = new Breaker();
 
     var fileSizes = sizeDeterminer.determine(files);
     var aggregatedSizes = aggregator.aggregate(fileSizes.files);
+    var breakBuild = breaker.breakOn(files, options.break);
 
     var completeSizes = {
       files: formatter.formatAll(fileSizes.files),
       summary: formatter.formatAll(fileSizes.summary),
-      aggregations: formatter.formatAll(aggregatedSizes)
+      aggregations: formatter.formatAll(aggregatedSizes),
+      breaker: breakBuild
     };
 
     completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
 
     persister.persist(completeSizes);
+
+    if (breakBuild.break === true) {
+      grunt.log.errorlns('Assets are not passing your conditions, breaking build...');
+    } else {
+      grunt.log.oklns('Assets have been analyzed, build passing...');
+    }
   });
 };

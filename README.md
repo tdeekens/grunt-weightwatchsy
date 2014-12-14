@@ -41,7 +41,8 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
   human: <true> //Prettifies file sizes to readable format
   location: <'dist/weightwatchsy.json'> //Path where to save results
   aggregate: <['.txt', '.css', '.js', '.png', '.jpg']> //Sums up assets' sizes per extension type
-  groups <{}> //Allows for grouping asset types e.g. `{text: ['.css', '.css']}`  
+  groups: <{}> //Allows for grouping asset types e.g. `{text: ['.css', '.css']}`
+  break: <{}> //Allows breaking the build by e.g. stating `{aggregations: {css: 1000}}`
 }
 ```
 
@@ -51,3 +52,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 
 ## Release History
 - 0.0.1 Initial release
+- 0.0.2 Add conditional breaking of build
