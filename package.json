@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A grunt plugin to gather a project's assets' file sizes.",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt ci-test"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-mocha-cov": "^0.3.0",
     "grunt-mocha-test": "^0.12.4",
     "grunt-shell": "^1.1.1",
     "load-grunt-config": "^0.16.0",
@@ -40,5 +41,12 @@
   "peerDependencies": {
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.1"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "tasks"
+      ]
+    }
   }
 }

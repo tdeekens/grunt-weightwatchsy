@@ -3,7 +3,12 @@
     "jshint"
   ],
   "test": [
-    "mochaTest"
+    "mochacov:html",
+    "mochacov:spec"
+  ],
+  "ci-test": [
+    "test",
+    "mochacov:ci"
   ],
   "dev": [
     "weightwatchsy"
