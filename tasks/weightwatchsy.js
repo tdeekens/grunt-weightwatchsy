@@ -48,6 +48,8 @@ module.exports = function(grunt) {
       aggregations: formatter.formatAll(aggregatedSizes)
     };
 
+    completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
+
     persister.persist(completeSizes);
   });
 };
