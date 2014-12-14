@@ -23,7 +23,7 @@ describe('Aggregator specification', function() {
 
     sizes = sizeDeterminer.determine(files);
 
-    expect(aggregator.aggregate(sizes)['.txt']).to.equal(14);
+    expect(aggregator.aggregate(sizes.files)['.txt']).to.equal(14);
   });
 
   it('aggregates file sizes with two type', function() {
@@ -39,7 +39,7 @@ describe('Aggregator specification', function() {
       aggregated;
 
     sizes = sizeDeterminer.determine(files);
-    aggregated = aggregator.aggregate(sizes);
+    aggregated = aggregator.aggregate(sizes.files);
 
     expect(aggregated['.txt']).to.equal(14);
     expect(aggregated['.css']).to.equal(12);
@@ -58,7 +58,7 @@ describe('Aggregator specification', function() {
         aggregated;
 
     sizes = sizeDeterminer.determine(files);
-    aggregated = aggregator.aggregate(sizes);
+    aggregated = aggregator.aggregate(sizes.files);
 
     expect(aggregated['.txt']).to.equal(14);
     expect(aggregated['.css']).to.equal(12);
@@ -80,7 +80,7 @@ describe('Aggregator specification', function() {
     aggregated;
 
     sizes = sizeDeterminer.determine(files);
-    aggregated = aggregator.aggregate(sizes);
+    aggregated = aggregator.aggregate(sizes.files);
 
     expect(aggregated['.jpg']).to.equal(0);
     expect(aggregated.text).to.equal(26);

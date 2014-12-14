@@ -40,10 +40,11 @@ module.exports = function(grunt) {
     var persister = new Persister(options.location);
 
     var fileSizes = sizeDeterminer.determine(files);
-    var aggregatedSizes = aggregator.aggregate(fileSizes);
+    var aggregatedSizes = aggregator.aggregate(fileSizes.files);
 
     var completeSizes = {
-      files: formatter.formatAll(fileSizes),
+      files: formatter.formatAll(fileSizes.files),
+      summary: formatter.formatAll(fileSizes.summary),
       aggregations: formatter.formatAll(aggregatedSizes)
     };
 

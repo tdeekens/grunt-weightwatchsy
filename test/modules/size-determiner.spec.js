@@ -10,12 +10,9 @@ describe('Formatter specification', function() {
 
   it('retuns the correct size for a file', function() {
     var file = './test/fixtures/my.txt';
+    var sizes = sizeDeterminer.determine([file]);
 
-    expect(sizeDeterminer.determine([
-      file
-    ])[file]).to.equal(
-      fs.statSync(file).size
-    );
+    expect(sizes.files[file]).to.equal(fs.statSync(file).size);
   });
 
   it('retuns the correct size for multiple files', function() {
@@ -26,7 +23,7 @@ describe('Formatter specification', function() {
     ];
 
     expect(
-      sizeDeterminer.determine(files).total
+      sizeDeterminer.determine(files).summary.size
     ).to.equal(
       fs.statSync(files[0]).size +
       fs.statSync(files[1]).size +

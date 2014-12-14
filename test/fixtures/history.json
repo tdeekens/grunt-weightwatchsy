@@ -1,7 +1,12 @@
 {
-  "total": 26,
-  "./test/fixtures/my.txt": 3,
-  "./test/fixtures/five.txt": 5,
-  "./test/fixtures/cents.txt": 6,
-  "./test/fixtures/some.css": 12
+  "summary": {
+    "size": 26,
+    "average": 6.5
+  },
+  "files": {
+    "./test/fixtures/my.txt": 3,
+    "./test/fixtures/five.txt": 5,
+    "./test/fixtures/cents.txt": 6,
+    "./test/fixtures/some.css": 12
+  }
 }
