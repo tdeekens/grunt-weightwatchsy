@@ -75,12 +75,6 @@ Aggregator.prototype.shouleBeAggregated = function(extension) {
   );
 };
 
-Aggregator.prototype.clone = function(object) {
-  return JSON.parse(
-    JSON.stringify(object)
-  );
-};
-
 Aggregator.prototype.fill = function(fromArray, withValue) {
   var filled = {};
 

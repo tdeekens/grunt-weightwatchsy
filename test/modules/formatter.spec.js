@@ -33,4 +33,22 @@ describe('Formatter specification', function() {
   it('returns GiB if more than 1 GiB', function() {
     expect(humanFormatter.format(1.5 * gb)).to.equal('1.5 GiB');
   });
+
+  it('formats a list of size entries', function() {
+    var formatted = humanFormatter.formatAll({
+      gb: 1.5 * gb,
+      kb: 1.5 * kb
+    });
+
+    expect(formatted.gb).to.equal('1.5 GiB');
+    expect(formatted.kb).to.equal('1.5 KiB');
+
+    formatted = unhumanFormatter.formatAll({
+      gb: 1.5 * gb,
+      kb: 1.5 * kb
+    });
+
+    expect(formatted.gb).to.equal(1610612736);
+    expect(formatted.kb).to.equal(1536);
+  });
 });
