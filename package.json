@@ -12,8 +12,8 @@
   "keywords": [
     "grunt",
     "npm",
-    "screenshots",
-    "BrowserStack",
+    "asset",
+    "size",
     "plugin"
   ],
   "author": "Tobias Deekens <nerd@tdeekens.name> (http://tdeekens.name)",
