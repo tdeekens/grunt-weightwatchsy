@@ -37,13 +37,34 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
 
 ```javascript
 {
-  human: <true> //Prettifies file sizes to readable format
-  location: <'dist/weightwatchsy.json'> //Path where to save results
-  aggregate: <['.txt', '.css', '.js', '.png', '.jpg']> //Sums up assets' sizes per extension type
-  groups: <{}> //Allows for grouping asset types e.g. `{text: ['.css', '.css']}`
-  break: <{}> //Allows breaking the build by e.g. stating `{aggregations: {css: 1000}}`
+  //Prettifies file sizes to readable format
+  human: <true>
+  //Path where to save results
+  location: <'dist/weightwatchsy.json'>
+  //Sums up assets' sizes per extension type
+  aggregate: <['.txt', '.css', '.js', '.png', '.jpg']>
+  /**
+   * Allows for grouping asset types e.g.
+   * {
+   *   text: ['.css', '.js']
+   * }
+   */
+  groups: <{}>
+  /**
+   * Allows breaking the build by e.g. stating
+   * {
+   *   aggregations: {
+   *     css: 1000
+   *   },
+   *   groups: {
+   *     text: 20000
+   *   }
+   * }
+   */
 }
 ```
+
+An example configuration can be found [here](https://github.com/tdeekens/grunt-weightwatchsy/blob/master/grunt/tasks/weightwatchsy.js) and if you want to check the options you might want to check the [Gruntfile](https://github.com/tdeekens/grunt-weightwatchsy/blob/master/tasks/weightwatchsy.js#L22) itself.
 
 ## Developing & Contributing
 
