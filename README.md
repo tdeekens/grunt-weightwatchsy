@@ -61,6 +61,10 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
    *   }
    * }
    */
+   break: <{
+     file: {},
+     aggregations: {}
+   }>
 }
 ```
 
