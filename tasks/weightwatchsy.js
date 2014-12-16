@@ -64,12 +64,12 @@ module.exports = function(grunt) {
 
     if (sanity.broken === true) {
       grunt.log.errorlns('Assets are not passing your conditions...');
+
+      if (options.warn === false) {
+        grunt.fail.warn('...breaking build as a result thereof!')
+      }
     } else {
       grunt.log.oklns('Assets have been analyzed, build passing...');
-    }
-
-    if (options.warn === false) {
-      grunt.fail.warn('...breaking build as a result thereof!')
     }
   });
 };
