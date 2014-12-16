@@ -20,6 +20,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('weightwatchsy', 'Gather your assets\' size over time', function() {
     var options = this.options({
       human: true,
+      warn: true,
       location: './dist/weightwatchsy.json',
       aggregate: ['.txt', '.css', '.js', '.png', '.jpg'],
       groups: {},
@@ -62,9 +63,13 @@ module.exports = function(grunt) {
     persister.persist(completeSizes);
 
     if (sanity.broken === true) {
-      grunt.log.errorlns('Assets are not passing your conditions, breaking build...');
+      grunt.log.errorlns('Assets are not passing your conditions...');
     } else {
       grunt.log.oklns('Assets have been analyzed, build passing...');
+    }
+
+    if (options.warn === false) {
+      grunt.fail.warn('...breaking build as a result thereof!')
     }
   });
 };

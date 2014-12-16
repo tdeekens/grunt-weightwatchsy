@@ -38,18 +38,18 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
 ```javascript
 {
   //Prettifies file sizes to readable format
-  human: <true>
+  human: <true>,
   //Path where to save results
-  location: <'dist/weightwatchsy.json'>
+  location: <'dist/weightwatchsy.json'>,
   //Sums up assets' sizes per extension type
-  aggregate: <['.txt', '.css', '.js', '.png', '.jpg']>
+  aggregate: <['.txt', '.css', '.js', '.png', '.jpg']>,
   /**
    * Allows for grouping asset types e.g.
    * {
    *   text: ['.css', '.js']
    * }
    */
-  groups: <{}>
+  groups: <{}>,
   /**
    * Allows breaking the build by e.g. stating
    * {
@@ -68,7 +68,9 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
      file: {},
      aggregations: {},
      summary: {}
-   }>
+   }>,
+   //Aborts grunt immediately if false and a `break`-condition holds
+   warn: <true>
 }
 ```
 
@@ -83,3 +85,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.0.2 Add conditional breaking of build
 - 0.0.3 Clean up and refactoring
 - 0.0.4 Add support for breaking on summary conditions
+- 0.0.5 Add warn-flag allowing to immediately fail grunt if break-condition holds
