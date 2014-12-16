@@ -58,12 +58,16 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
    *   },
    *   groups: {
    *     text: 20000
+   *   },
+   *   summary: {
+   *     text: 50000
    *   }
    * }
    */
    break: <{
      file: {},
-     aggregations: {}
+     aggregations: {},
+     summary: {}
    }>
 }
 ```
@@ -78,3 +82,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.0.1 Initial release
 - 0.0.2 Add conditional breaking of build
 - 0.0.3 Clean up and refactoring
+- 0.0.4 Add support for breaking on summary conditions

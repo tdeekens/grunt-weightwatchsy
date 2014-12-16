@@ -25,7 +25,8 @@ module.exports = function(grunt) {
       groups: {},
       break: {
         files: {},
-        aggregations: {}
+        aggregations: {},
+        summary: {}
       }
     });
 

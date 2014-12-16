@@ -11,7 +11,8 @@ Breaker.prototype.breakOn = function(conditions, sizes) {
       reasons: []
     },
     fileConditions = conditions.files || {},
-    aggregationConditions = conditions.aggregations || {};
+    aggregationConditions = conditions.aggregations || {},
+    summaryConditions = conditions.summary || {};;
 
   Object.keys(fileConditions).forEach(function(file) {
     if (sizes.files[file] > conditions.files[file]) {
@@ -23,6 +24,13 @@ Breaker.prototype.breakOn = function(conditions, sizes) {
   Object.keys(aggregationConditions).forEach(function(aggregation) {
     if (sizes.aggregations[aggregation] > conditions.aggregations[aggregation]) {
       analysis.reasons.push(aggregation);
+      analysis.broken = true;
+    }
+  });
+
+  Object.keys(summaryConditions).forEach(function(summary) {
+    if (sizes.summary[summary] > conditions.summary[summary]) {
+      analysis.reasons.push(summary);
       analysis.broken = true;
     }
   });

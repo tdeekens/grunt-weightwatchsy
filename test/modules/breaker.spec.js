@@ -67,4 +67,26 @@ describe('Breaker specification', function() {
       breakerResult.reasons.indexOf('.txt') >= 0
     ).to.be.true;
   });
+
+  it('intendens to break when a summary condition is truethy', function() {
+    var files = [
+      './test/fixtures/my.txt',
+      './test/fixtures/five.txt',
+      './test/fixtures/cents.txt'
+    ];
+    var sizes = sizeDeterminer.determine(files);
+    var breakerResult = breaker.breakOn({
+      summary: {
+        size: 0
+      }
+    }, sizes);
+
+    expect(
+      breakerResult.broken
+    ).to.be.true;
+
+    expect(
+      breakerResult.reasons.indexOf('size') >= 0
+    ).to.be.true;
+  });
 });
