@@ -86,3 +86,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.0.3 Clean up and refactoring
 - 0.0.4 Add support for breaking on summary conditions
 - 0.0.5 Add warn-flag allowing to immediately fail grunt if break-condition holds
+- 0.1.0 Minor version bump - stable enough
