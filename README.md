@@ -1,7 +1,5 @@
 # grunt-weightwatchsy
 
-**Note: This grunt plugin is under current development and not ready for use just now!**
-
 > Grunt task for gathering the file sizes of different asset types over time.
 
 [![NPM](https://nodei.co/npm/grunt-weightwatchsy.png?mini=true)](https://nodei.co/npm/grunt-weightwatchsy/)
