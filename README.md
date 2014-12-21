@@ -58,7 +58,8 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
    *     text: 20000
    *   },
    *   summary: {
-   *     text: 50000
+   *     size: 50000,
+   *     average: 250
    *   }
    * }
    */
