@@ -60,6 +60,11 @@ module.exports = function(grunt) {
 
     completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
 
+    var sizesByExtensions = formatter.formatAll(aggregator.getSizesByExtensions());
+    completeSizes.extensions = Object.keys(sizesByExtensions).map(function(extension) {
+      return sizesByExtensions[extension] + ' (' + extension + ')';
+    });
+
     persister.persist(completeSizes);
 
     if (sanity.broken === true) {

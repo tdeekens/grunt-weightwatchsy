@@ -27,11 +27,15 @@ Aggregator.prototype.aggregateSingle = function(files) {
     that.sumUp(
       extension,
       files[file],
-      that.shouleBeAggregated(extension)
+      that.shouldBeAggregated(extension)
     );
   });
 
   return this;
+};
+
+Aggregator.prototype.getSizesByExtensions = function() {
+  return this._sizesByExtension;
 };
 
 Aggregator.prototype.aggregateMultiple = function() {
@@ -68,7 +72,7 @@ Aggregator.prototype.getExtension = function(file) {
   };
 };
 
-Aggregator.prototype.shouleBeAggregated = function(extension) {
+Aggregator.prototype.shouldBeAggregated = function(extension) {
   return (
     this._aggregated[extension.ordinary] !== undefined ||
     this._aggregated[extension.sanitized] !== undefined
