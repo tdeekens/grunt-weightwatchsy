@@ -55,7 +55,8 @@ module.exports = function(grunt) {
       files: formatter.formatAll(fileSizes.files),
       summary: formatter.formatAll(fileSizes.summary),
       aggregations: formatter.formatAll(aggregatedSizes),
-      sanity: sanity
+      sanity: sanity,
+      extensions: []
     };
 
     completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
@@ -63,6 +64,10 @@ module.exports = function(grunt) {
     var sizesByExtensions = formatter.formatAll(aggregator.getSizesByExtensions());
     completeSizes.extensions = Object.keys(sizesByExtensions).map(function(extension) {
       return sizesByExtensions[extension] + ' (' + extension + ')';
+    });
+
+    completeSizes.summary.info = Object.keys(completeSizes.aggregations).map(function(extension) {
+      return completeSizes.aggregations[extension] + ' (' + extension + ')';
     });
 
     persister.persist(completeSizes);

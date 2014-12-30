@@ -88,3 +88,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.1.0 Minor version bump - stable enough
 - 0.1.1 Fix breaking build with warn-flag
 - 0.1.2 Add summary of sizes by extensions
+- 0.1.3 Add brief information under summary entry
