@@ -92,3 +92,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.1.2 Add summary of sizes by extensions
 - 0.1.3 Add brief information under summary entry
 - 0.1.4 Add support for explicitly excluding extensions
+- 0.1.5 Fix lodash dependency
