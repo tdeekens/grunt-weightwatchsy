@@ -12,7 +12,7 @@ Breaker.prototype.breakOn = function(conditions, sizes) {
     },
     fileConditions = conditions.files || {},
     aggregationConditions = conditions.aggregations || {},
-    summaryConditions = conditions.summary || {};;
+    summaryConditions = conditions.summary || {};
 
   Object.keys(fileConditions).forEach(function(file) {
     if (sizes.files[file] > conditions.files[file]) {

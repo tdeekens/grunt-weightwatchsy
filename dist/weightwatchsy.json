@@ -1,38 +1,42 @@
 {
   "files": {
     "./tasks/modules/aggregator.js": "2.1 KiB",
-    "./tasks/modules/breaker.js": "1001 B",
-    "./tasks/modules/formatter.js": "835 B",
+    "./tasks/modules/breaker.js": "1000 B",
+    "./tasks/modules/file-analyzer.js": "739 B",
+    "./tasks/modules/formatter.js": "836 B",
     "./tasks/modules/persister.js": "828 B",
     "./tasks/modules/size-determiner.js": "548 B",
-    "./tasks/weightwatchsy.js": "2.6 KiB"
+    "./tasks/weightwatchsy.js": "2.8 KiB"
   },
   "summary": {
-    "size": "7.8 KiB",
-    "average": "1.3 KiB",
-    "quantity": 6,
+    "size": "8.7 KiB",
+    "average": "1.2 KiB",
+    "quantity": 7,
     "info": [
       "0 B (.txt)",
       "0 B (.css)",
-      "7.8 KiB (.js)",
+      "8.7 KiB (.js)",
       "0 B (.png)",
       "0 B (.jpg)",
-      "7.8 KiB (text)"
+      "8.7 KiB (text)"
     ]
   },
   "aggregations": {
     ".txt": "0 B",
     ".css": "0 B",
-    ".js": "7.8 KiB",
+    ".js": "8.7 KiB",
     ".png": "0 B",
     ".jpg": "0 B",
-    "text": "7.8 KiB"
+    "text": "8.7 KiB"
   },
   "sanity": {
     "broken": false,
     "reasons": []
   },
   "extensions": [
-    "7.8 KiB (.js)"
+    "8.7 KiB (.js)"
+  ],
+  "exclusions": [
+    ".txt"
   ]
 }

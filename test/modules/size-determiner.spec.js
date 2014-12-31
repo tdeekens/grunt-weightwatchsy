@@ -8,14 +8,14 @@ describe('Formatter specification', function() {
     sizeDeterminer = new SizeDeterminer({});
   });
 
-  it('retuns the correct size for a file', function() {
+  it('returns the correct size for a file', function() {
     var file = './test/fixtures/my.txt';
     var sizes = sizeDeterminer.determine([file]);
 
     expect(sizes.files[file]).to.equal(fs.statSync(file).size);
   });
 
-  it('retuns the correct size for multiple files', function() {
+  it('returns the correct size for multiple files', function() {
     var files = [
       './test/fixtures/my.txt',
       './test/fixtures/five.txt',

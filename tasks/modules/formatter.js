@@ -43,6 +43,6 @@ Formatter.prototype.formatAll = function(files) {
   });
 
   return files;
-}
+};
 
 module.exports = Formatter;
