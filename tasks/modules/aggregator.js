@@ -1,12 +1,15 @@
 'use strict';
 
-var path = require('path');
+var path = require('path'),
+    _ = require('lodash');
 
-function Aggregator(aggregations, groups) {
+function Aggregator(aggregations, groups, variations) {
   this._aggregations = aggregations;
   this._groups = groups || {};
+  this._variations = variations || [];
 
   this._aggregated = this.fill(this._aggregations, 0);
+  this._sizesByVariations = {};
   this._sizesByExtension = {};
 }
 
@@ -19,15 +22,16 @@ Aggregator.prototype.aggregate = function(files) {
 };
 
 Aggregator.prototype.aggregateSingle = function(files) {
-  var that = this;
+  var _this = this;
 
   Object.keys(files).forEach(function(file) {
-    var extension = that.getExtension(file);
+    var extension = _this.getExtension(file);
 
-    that.sumUp(
-      extension,
+    _this.sumUp(
+      file,
       files[file],
-      that.shouldBeAggregated(extension)
+      _this.shouldBeAggregated(extension),
+      _this.isVariation(extension)
     );
   });
 
@@ -38,44 +42,73 @@ Aggregator.prototype.getSizesByExtensions = function() {
   return this._sizesByExtension;
 };
 
+Aggregator.prototype.getSizesByVariations = function() {
+  return this._sizesByVariations;
+};
+
 Aggregator.prototype.aggregateMultiple = function() {
-  var that = this;
+  var _this = this;
 
   Object.keys(this._groups).forEach(function(byName) {
-    that._aggregated[byName] = 0;
+    _this._aggregated[byName] = 0;
 
-    that._groups[byName].forEach(function(aggregation) {
-      that._aggregated[byName] += that._sizesByExtension[aggregation] || 0;
+    _this._groups[byName].forEach(function(aggregation) {
+      _this._aggregated[byName] += _this._sizesByExtension[aggregation] || 0;
     });
   });
 
   return this;
 };
 
-Aggregator.prototype.sumUp = function(extension, size, exported) {
-  if (exported === true) {
-    if (this._aggregated[extension.ordinary] !== undefined) {
-      this._aggregated[extension.ordinary] += size;
-    } else {
-      this._aggregated[extension.sanitized] += size;
-    }
-  }
+Aggregator.prototype.sumUp = function(file, size, isAggregation, isVariation) {
+  var extension = this.getExtension(file);
 
-  this._sizesByExtension[extension.ordinary] = (this._sizesByExtension[extension.ordinary] === undefined) ?
-    size : this._sizesByExtension[extension.ordinary] + size;
+  if (isAggregation === true) { this.sumUpAggregation(extension, size); }
+  if (isVariation === true) { this.sumUpVariation(file, size); }
+
+  this.sumUpExtension(extension, size);
+};
+
+Aggregator.prototype.sumUpAggregation = function(extension, size) {
+  this._aggregated[extension] += size;
+};
+
+Aggregator.prototype.sumUpVariation = function(file, size) {
+  var extension = this.getExtension(file),
+      ordinaryExtension = this.getExtension(path.basename(file, extension));
+
+  this._sizesByVariations[ordinaryExtension] = this._sizesByVariations[ordinaryExtension] || {};
+
+  this._sizesByVariations[ordinaryExtension][extension] = (this._sizesByVariations[ordinaryExtension][extension] === undefined) ?
+    size :
+    this._sizesByVariations[ordinaryExtension][extension] + size;
+};
+
+Aggregator.prototype.sumUpExtension = function(extension, size) {
+  this._sizesByExtension[extension] = (this._sizesByExtension[extension] === undefined) ?
+    size :
+    this._sizesByExtension[extension] + size;
 };
 
 Aggregator.prototype.getExtension = function(file) {
-  return {
-    ordinary: path.extname(file),
-    sanitized: path.extname(file).substring(1)
-  };
+  return path.extname(file);
+};
+
+Aggregator.prototype.isVariation = function(extension) {
+  var isVariation = (
+    _.some(this._variations, function(variation) {
+      return (
+        _.contains(extension, variation)
+      );
+    })
+  );
+
+  return isVariation;
 };
 
 Aggregator.prototype.shouldBeAggregated = function(extension) {
   return (
-    this._aggregated[extension.ordinary] !== undefined ||
-    this._aggregated[extension.sanitized] !== undefined
+    this._aggregated[extension] !== undefined
   );
 };
 

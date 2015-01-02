@@ -71,7 +71,10 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
    //Aborts grunt immediately if false and a `break`-condition holds
    warn: <true>,
    //Excludes dependencies by name (from extensions and total size etc.)
-   exclusions: <[]>
+   exclusions: <[]>,
+   //Variations of files e.g .gz versions of all .js and css files which should be
+   //treated separately and not be aggregated all as .gz
+   variations: <[]>
 }
 ```
 
@@ -93,3 +96,6 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.1.3 Add brief information under summary entry
 - 0.1.4 Add support for explicitly excluding extensions
 - 0.1.5 Fix lodash dependency
+- 0.2.0
+  - Add support for variation of files (e.g. compressed assets)
+  - Remove support for specifying extensions as in '.jpg' or 'jpg' only '.jpg' accepted now

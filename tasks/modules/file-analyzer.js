@@ -8,27 +8,37 @@ function FileAnalyzer(exclusions) {
   this._exclusions = exclusions;
 }
 
+FileAnalyzer.prototype.getFiles = function(globbedFiles) {
+  var files = [];
+
+  globbedFiles.forEach(function(file) {
+    files = file.src.filter(function(filepath) {
+      return fs.lstatSync(filepath).isFile();
+    }).map(function(filepath) {
+      return filepath;
+    });
+  });
+
+  return files;
+};
+
 FileAnalyzer.prototype.shuntAll = function(files) {
-  var that = this;
+  var _this = this;
 
   return _.filter(files, function(file) {
-    return !that.isExcluded(file);
+    return !_this.isExcluded(file);
   });
 };
 
 FileAnalyzer.prototype.getExtension = function(file) {
-  return {
-    ordinary: path.extname(file),
-    sanitized: path.extname(file).substring(1)
-  };
+  return path.extname(file);
 };
 
 FileAnalyzer.prototype.isExcluded = function(file) {
   var extension = this.getExtension(file);
 
   return (
-    _.contains(this._exclusions, extension.ordinary) ||
-    _.contains(this._exclusions, extension.ordinary)
+    _.contains(this._exclusions, extension)
   );
 };
 

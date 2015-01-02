@@ -85,4 +85,53 @@ describe('Aggregator specification', function() {
     expect(aggregated['.jpg']).to.equal(0);
     expect(aggregated.text).to.equal(26);
   });
+
+  it('calculates sizes by extensions', function() {
+    aggregator = new Aggregator(['.jpg'], {
+      text: ['.js', '.txt']
+    });
+
+    var files = [
+      './test/fixtures/my.txt',
+      './test/fixtures/five.txt',
+      './test/fixtures/cents.txt',
+      './test/fixtures/some.css'
+    ],
+    sizes,
+    extensions;
+
+    sizes = sizeDeterminer.determine(files);
+    aggregator.aggregate(sizes.files);
+    extensions = aggregator.getSizesByExtensions();
+
+    expect(extensions['.txt']).to.equal(14);
+    expect(extensions['.css']).to.equal(12);
+    expect(extensions['.jpg']).to.be.undefined;
+  });
+
+  it('handles variations of ordinary files', function() {
+    aggregator = new Aggregator(['.txt', '.js'], {
+      text: ['.css', '.js', '.txt']
+    }, ['.gz']);
+
+    var files = [
+      './test/fixtures/my.txt',
+      './test/fixtures/five.txt',
+      './test/fixtures/cents.txt',
+      './test/fixtures/some.css',
+      './test/fixtures/five.txt.gz',
+      './test/fixtures/cents.txt.gz'
+    ],
+    sizes,
+    aggregated,
+    variations;
+
+    sizes = sizeDeterminer.determine(files);
+    aggregated = aggregator.aggregate(sizes.files);
+    variations = aggregator.getSizesByVariations();
+
+    expect(aggregated['.js']).to.equal(0);
+    expect(aggregated.text).to.equal(26);
+    expect(variations['.txt']['.gz']).to.equal(12);
+  });
 });

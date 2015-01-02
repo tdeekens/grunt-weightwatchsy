@@ -4,7 +4,8 @@ module.exports = {
     groups: {
       text: ['.js', '.css', '.txt']
     },
-    exclusions: ['.txt']
+    exclusions: ['.txt'],
+    variations: ['.gz']
   },
   test: ['./tasks/**']
 };
