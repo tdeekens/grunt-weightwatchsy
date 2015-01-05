@@ -15,7 +15,7 @@ var Persister = require('./modules/persister');
 var Breaker = require('./modules/breaker');
 var FileAnalyzer = require('./modules/file-analyzer');
 var fs = require('fs');
-var _ = require('lodash')
+var _ = require('lodash');
 
 module.exports = function(grunt) {
 
@@ -46,14 +46,15 @@ module.exports = function(grunt) {
     files = fileAnalyzer.getFiles(this.files);
     files = fileAnalyzer.shuntAll(files);
 
-    var fileSizes = sizeDeterminer.determine(files),
-        aggregatedSizes = aggregator.aggregate(fileSizes.files),
-        sanity = breaker.breakOn(files, options.break);
+    var fileSizes = sizeDeterminer.determine(files);
+    fileSizes.aggregations = aggregator.aggregate(fileSizes.files);
+
+    var sanity = breaker.breakOn(fileSizes, options.break);
 
     var completeSizes = {
       files: formatter.formatAll(fileSizes.files),
       summary: formatter.formatAll(fileSizes.summary),
-      aggregations: formatter.formatAll(aggregatedSizes),
+      aggregations: formatter.formatAll(fileSizes.aggregations),
       sanity: sanity,
       extensions: [],
       variations: {},

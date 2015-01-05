@@ -18,7 +18,7 @@ describe('Breaker specification', function() {
     var file = './test/fixtures/my.txt';
     var sizes = sizeDeterminer.determine([file]);
 
-    expect(breaker.breakOn({}, sizes).broken).to.be.false;
+    expect(breaker.breakOn(sizes, {}).broken).to.be.false;
   });
 
   it('intendens to break when a file condition is truethy', function() {
@@ -28,11 +28,11 @@ describe('Breaker specification', function() {
       './test/fixtures/cents.txt'
     ];
     var sizes = sizeDeterminer.determine(files);
-    var breakerResult = breaker.breakOn({
+    var breakerResult = breaker.breakOn(sizes, {
       files: {
         './test/fixtures/my.txt': 0
       }
-    }, sizes);
+    });
 
     expect(
       breakerResult.broken
@@ -52,11 +52,11 @@ describe('Breaker specification', function() {
     var sizes = sizeDeterminer.determine(files);
     var aggregated = aggregator.aggregate(sizes.files);
     var breakerResult = breaker.breakOn({
+      aggregations: aggregated
+    }, {
       aggregations: {
         '.txt': 0
       }
-    }, {
-      aggregations: aggregated
     });
 
     expect(
@@ -75,11 +75,11 @@ describe('Breaker specification', function() {
       './test/fixtures/cents.txt'
     ];
     var sizes = sizeDeterminer.determine(files);
-    var breakerResult = breaker.breakOn({
+    var breakerResult = breaker.breakOn(sizes, {
       summary: {
         size: 0
       }
-    }, sizes);
+    });
 
     expect(
       breakerResult.broken

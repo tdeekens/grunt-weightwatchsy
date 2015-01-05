@@ -4,7 +4,7 @@ function Breaker() {
 
 }
 
-Breaker.prototype.breakOn = function(conditions, sizes) {
+Breaker.prototype.breakOn = function(sizes, conditions) {
   var
     analysis = {
       broken: false,
@@ -27,6 +27,7 @@ Breaker.prototype.breakOn = function(conditions, sizes) {
       analysis.broken = true;
     }
   });
+
 
   Object.keys(summaryConditions).forEach(function(summary) {
     if (sizes.summary[summary] > conditions.summary[summary]) {

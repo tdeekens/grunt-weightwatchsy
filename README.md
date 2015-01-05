@@ -98,4 +98,5 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.1.5 Fix lodash dependency
 - 0.2.0
   - Add support for variation of files (e.g. compressed assets)
-  - Remove support for specifying extensions as in '.jpg' or 'jpg' only '.jpg' accepted now
+  - Remove support for specifying extensions as in '.jpg' or 'jpg' only '.jpg' accepted now\
+- 0.2.1 Fix breaker getting correct parameters

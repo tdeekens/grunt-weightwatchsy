@@ -1,7 +1,7 @@
 {
   "files": {
     "./tasks/modules/aggregator.js": "3.1 KiB",
-    "./tasks/modules/breaker.js": "1000 B",
+    "./tasks/modules/breaker.js": "1001 B",
     "./tasks/modules/file-analyzer.js": "911 B",
     "./tasks/modules/formatter.js": "836 B",
     "./tasks/modules/persister.js": "828 B",
