@@ -100,3 +100,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
   - Add support for variation of files (e.g. compressed assets)
   - Remove support for specifying extensions as in '.jpg' or 'jpg' only '.jpg' accepted now\
 - 0.2.1 Fix breaker getting correct parameters
+- 0.2.2 Export raw sizes per extension as devlish values

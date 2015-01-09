@@ -49,22 +49,23 @@ module.exports = function(grunt) {
     var fileSizes = sizeDeterminer.determine(files);
     fileSizes.aggregations = aggregator.aggregate(fileSizes.files);
 
-    var sanity = breaker.breakOn(fileSizes, options.break);
+    var sanity = breaker.breakOn(fileSizes, options.break),
+        rawSizes = _.clone(aggregator.getSizesByExtensions());
 
     var completeSizes = {
       files: formatter.formatAll(fileSizes.files),
       summary: formatter.formatAll(fileSizes.summary),
       aggregations: formatter.formatAll(fileSizes.aggregations),
       sanity: sanity,
-      extensions: [],
+      extensions: {},
       variations: {},
       exclusions: options.exclusions
     };
 
     completeSizes.summary.quantity = Object.keys(completeSizes.files).length;
 
-    var sizesByExtensions = formatter.formatAll(aggregator.getSizesByExtensions());
-    completeSizes.extensions = sizesByExtensions;
+    completeSizes.extensions.devilish = rawSizes;
+    completeSizes.extensions.human = formatter.formatAll(aggregator.getSizesByExtensions());
 
     _.each(aggregator.getSizesByVariations(), function(extensions, variation) {
       completeSizes.variations[variation] =  formatter.formatAll(extensions);
