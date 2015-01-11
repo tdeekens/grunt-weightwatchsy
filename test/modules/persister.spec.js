@@ -16,7 +16,7 @@ describe('Persister specification', function() {
   })
 
   beforeEach(function() {
-    persister = new Persister(historyFile, true);
+    persister = new Persister(historyFile, true, 10);
     sizeDeterminer = new SizeDeterminer({});
   });
 

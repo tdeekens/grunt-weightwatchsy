@@ -6,7 +6,7 @@
     "./tasks/modules/formatter.js": "836 B",
     "./tasks/modules/persister.js": "828 B",
     "./tasks/modules/size-determiner.js": "548 B",
-    "./tasks/weightwatchsy.js": "3.1 KiB"
+    "./tasks/weightwatchsy.js": "3.2 KiB"
   },
   "summary": {
     "size": "10.2 KiB",
@@ -34,7 +34,12 @@
     "reasons": []
   },
   "extensions": {
-    ".js": "10.2 KiB"
+    "devilish": {
+      ".js": 10495
+    },
+    "human": {
+      ".js": "10.2 KiB"
+    }
   },
   "variations": {},
   "exclusions": [

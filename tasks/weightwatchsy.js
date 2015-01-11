@@ -32,6 +32,10 @@ module.exports = function(grunt) {
           files: {},
           aggregations: {},
           summary: {}
+        },
+        history: {
+          enabled: false,
+          limit: 10
         }
       });
 
@@ -40,7 +44,7 @@ module.exports = function(grunt) {
         sizeDeterminer = new SizeDeterminer(),
         aggregator = new Aggregator(options.aggregate, options.groups, options.variations),
         formatter = new Formatter(options.human),
-        persister = new Persister(options.location),
+        persister = new Persister(options.location, options.history.enabled, options.history.limit),
         breaker = new Breaker();
 
     files = fileAnalyzer.getFiles(this.files);

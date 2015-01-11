@@ -74,7 +74,12 @@ Or add it to an existing task: `grunt.registerTask('test', ['clean', 'weightwatc
    exclusions: <[]>,
    //Variations of files e.g .gz versions of all .js and css files which should be
    //treated separately and not be aggregated all as .gz
-   variations: <[]>
+   variations: <[]>,
+   //Keep history over builds with limit
+   history: <{
+     enabled: <false>,
+     limit: <10>
+   }>
 }
 ```
 
@@ -101,3 +106,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
   - Remove support for specifying extensions as in '.jpg' or 'jpg' only '.jpg' accepted now\
 - 0.2.1 Fix breaker getting correct parameters
 - 0.2.2 Export raw sizes per extension as devlish values
+- 0.2.3 Add support for history in builds with limit in length (builds)

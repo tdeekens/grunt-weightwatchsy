@@ -2,9 +2,10 @@
 
 var fs = require('fs');
 
-function Persister(location, keepHistory) {
+function Persister(location, keepHistory, limitHistory) {
   this._location = location;
   this._keepHistory = keepHistory;
+  this._limitHistory = limitHistory;
 }
 
 Persister.prototype.persist = function(stats) {
@@ -20,7 +21,7 @@ Persister.prototype.persist = function(stats) {
 
       history.push(stats);
 
-      written = this.write(history);
+      written = this.write(history.slice(0, this._limitHistory));
     } catch (err) {
       written = this.write([stats]);
     }
