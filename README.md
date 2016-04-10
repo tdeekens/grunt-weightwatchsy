@@ -107,3 +107,4 @@ Developing on the task alone is fairly easy just `git clone https://github.com/t
 - 0.2.1 Fix breaker getting correct parameters
 - 0.2.2 Export raw sizes per extension as devlish values
 - 0.2.3 Add support for history in builds with limit in length (builds)
+- 1.0.0 Update dependencies and add engine requirements

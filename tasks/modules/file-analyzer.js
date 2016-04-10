@@ -38,7 +38,7 @@ FileAnalyzer.prototype.isExcluded = function(file) {
   var extension = this.getExtension(file);
 
   return (
-    _.contains(this._exclusions, extension)
+    _.includes(this._exclusions, extension)
   );
 };
 

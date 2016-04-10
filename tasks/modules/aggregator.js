@@ -98,7 +98,7 @@ Aggregator.prototype.isVariation = function(extension) {
   var isVariation = (
     _.some(this._variations, function(variation) {
       return (
-        _.contains(extension, variation)
+        _.includes(extension, variation)
       );
     })
   );
